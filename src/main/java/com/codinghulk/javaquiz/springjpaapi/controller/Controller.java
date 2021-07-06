@@ -19,22 +19,25 @@ public class Controller {
     }
 
     @GetMapping("/questions")
-    @CrossOrigin(origins = "http://localhost:4401")
+    @CrossOrigin(origins = "http://localhost:4201")
     public List<Question> getQuestions() {
         return questionService.getQuestions();
     }
 
     @PostMapping("/question")
+    @CrossOrigin(origins = "http://localhost:4201")
     public void addQuestion(@RequestBody Question question){
         questionService.addNewQuestion(question);
     }
 
-    @PostMapping("/questions")
+    @PostMapping("/questionsAll")
+    @CrossOrigin(origins = "http://localhost:4201")
     public void addAllQuestions(@RequestBody List<Question> questionList){
         questionService.addQuestions(questionList);
     }
 
     @PutMapping("/question")
+    @CrossOrigin(origins = "http://localhost:4201")
     public void updateQuestion(@RequestBody Question question){
         questionService.updateQuestion(question);
     }
