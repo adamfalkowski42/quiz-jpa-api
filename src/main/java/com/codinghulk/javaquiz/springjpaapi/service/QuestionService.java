@@ -48,6 +48,9 @@ public class QuestionService {
         if (question.getAnswer() != null && question.getAnswer().length() > 0 && !Objects.equals(updateQuestion.getAnswer(), question.getAnswer())) {
             updateQuestion.setAnswer(question.getAnswer());
         }
+        if (!Objects.equals(updateQuestion.isAnswered(), question.isAnswered())) {
+            updateQuestion.setAnswered(question.isAnswered());
+        }
     }
 
 
@@ -65,5 +68,9 @@ public class QuestionService {
                 () -> new IllegalStateException("Question with this ID does not exist: " + id)
         );
 
+    }
+
+    public void resetQuestions(List<Question> questions) {
+        questionRepository.saveAll(questions);
     }
 }

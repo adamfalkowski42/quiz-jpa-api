@@ -52,6 +52,13 @@ public class Controller {
         questionService.updateQuestion(question);
     }
 
+
+    @PutMapping("/question/updateAll")
+    @CrossOrigin(origins = "http://localhost:4201")
+    public void updateQuestion(@RequestBody List<Question> questions){
+        questionService.resetQuestions(questions);
+    }
+
     @DeleteMapping("/question/{id}")
     @CrossOrigin(origins = "http://localhost:4201")
     public void deleteQuestion(@PathVariable Long id){
